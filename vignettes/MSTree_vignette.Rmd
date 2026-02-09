@@ -1,5 +1,6 @@
 ---
-title: "MSTree: features cluster Scan"
+title: "MSTree: Building Minimum Spanning Tree (MST) from 
+  chewBBACA pipeline output"
 author:
 - name: Abdullah El-Kurdi
   affiliation: 
@@ -80,23 +81,28 @@ __________
 <br>
 <br>
 
-# 1. makeGraphFromChewBBACA function
-## Input arguments
+# Details about the available functions
+## makeGraphFromChewBBACA function
+### Input arguments
 
-### chewbbaca_ExtractCgMLST_output: 
+#### chewbbaca_ExtractCgMLST_output: 
 data frame or the full path of the output file from chewBBACA ExtractCgMLST 
 module. it can be loaded using the following example:
 
+```
 cgmlst_output <- system.file("extdata", "cgMLST95.csv", package = "MSTree")
 cgmlst_output <- read.csv(cgmlst_output, row.names = 1, 
                     check.names = FALSE, sep='\t')
+```
 
 or directly provide the full path of the cgMLST table to 
 **makeGraphFromChewBBACA**:
+```
 cgmlst_output <- system.file("extdata", "cgMLST95.csv", package = "MSTree")
 my_graph <- makeGraphFromChewBBACA(cgmlst_output)
+```
 
-### max_allelic_difference
+#### max_allelic_difference
 allows the user to choose whether to connect nodes within a maximum distance. 
 Nodes that have a distance equal or less the indicated value will form a 
 cluster. Default is -1 which means no clustering is applied. It can be any 
@@ -106,68 +112,68 @@ database: https://www.cgmlst.org/ncs
 <br>
 <br>
 
-# 2. PlotMST function
-## Input arguments
+## PlotMST function
+### Input arguments
 
-### igraph_object
+#### igraph_object
 igraph object, output of the makeGraphFromChewBBACA function.
 
-### metadata
+#### metadata
 A data frame containing metadata about the isolates. This is an optional 
 argument. If given, the function will assume the first column contains the 
 isolates names and will add the remaining columns as metadata to the igraph 
 object, useful for generating custom coloring of the nodes 
 i.e. Year, Source, etc. The default is NULL.
 
-### show_clustering
+#### show_clustering
 If the user has used a value for max_allelic_difference when running 
 makeGraphFromChewBBACA, the user has the option to show the clustering 
 of nodes based on that threshold if set to TRUE, or FALSE to show the 
 minimum spanning tree without any clustering between nodes, as if the user 
 did not apply any clustering. The default is TRUE.
 
-### MST_edges_color
+#### MST_edges_color
 This argument will allow the user to set the color of the edges that connect 
 the nodes. The default is "black".
 
-### cluster_edges_color
+#### cluster_edges_color
 This argument will allow the user to set the color of the edges that connect 
 the clustered nodes. The default is "grey".
 
-### MST_edges_width
+#### MST_edges_width
 This argument will allow the user to set the width of the edges that connect 
 the nodes. The default is 0.75.
 
-### cluster_edges_width
+#### cluster_edges_width
 This argument will allow the user to set the width of the edges that connect 
 the clustered nodes. The default is 0.5.
 
-### edge_label_size 
+#### edge_label_size 
 This argument will allow the user to set the label size of the distances on 
 the edges. The default is 3.
 
-### edge_label_dodge
+#### edge_label_dodge
 This argument will allow the user control the position of the distance on the 
 edges. The default is 2
 
-### node_color 
+#### node_color 
 This argument will allow the user to choose the color of the nodes. The color 
 can be specified by its name or using hexadecimal representation. Also, 
 if the metadata argument is given, the user can specify a column name from the 
 metadata data frame to color the nodes i.e. "Year". The default is "red".
 
-### node_size
+#### node_size
 This argument will allow the user to control the node size. The default is 3.
 
-### node_label_size
+#### node_label_size
 This argument will allow the user to control the node label size. 
 If set to zero, no labels will be shown. The default is 0.
 
-### show_legend
+#### show_legend
 This argument will allow the user to show or hide the legend of the generated 
 plot. The default is TRUE.
 
-### title
+#### title
 This argument will allow the user to add a title to the generated plot. The 
 default is NULL.
 
@@ -176,6 +182,7 @@ default is NULL.
 <br>
 
 # Example
+```
 cgmlst_output <- system.file("extdata", "cgMLST95.csv", package = "MSTree")
 
 my_graph <- makeGraphFromChewBBACA(cgmlst_output, max_allelic_difference = 9)
@@ -185,6 +192,10 @@ mst <- PlotMST(my_graph, show_clustering = TRUE, show_legend=FALSE,
     node_label_size = 3, title = "MST")
 
 mst
+```
+
+<br>
+<br>
 
 ```{r}
 sessionInfo()
