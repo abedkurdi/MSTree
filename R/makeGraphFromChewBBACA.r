@@ -1,5 +1,7 @@
 ##' @title MSTree
 
+##' @export makeGraphFromChewBBACA
+
 makeGraphFromChewBBACA <- function(chewbbaca_ExtractCgMLST_output, 
             max_allelic_difference = -1){
     

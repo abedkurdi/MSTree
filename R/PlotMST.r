@@ -1,5 +1,7 @@
 ##' @title MSTree
 
+##' @export PlotMST
+
 PlotMST <- function(igraph_object, metadata = NULL, show_clustering = TRUE,
                     MST_edges_color = "black", cluster_edges_color = "grey",
                     MST_edges_width = 0.75, cluster_edges_width = 0.5,
