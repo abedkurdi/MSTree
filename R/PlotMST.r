@@ -2,7 +2,7 @@
 
 PlotMST <- function(igraph_object, metadata = NULL, show_clustering = TRUE,
                     MST_edges_color = "black", cluster_edges_color = "grey",
-                    MST_edges_with = 0.75, cluster_edges_width = 0.5,
+                    MST_edges_width = 0.75, cluster_edges_width = 0.5,
                     edge_label_size = 3, edge_label_dodge = 2,
                     node_color = "red", node_size = 3, node_label_size = 0,
                     show_legend=TRUE, title = NULL){
