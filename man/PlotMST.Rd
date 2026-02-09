@@ -28,7 +28,7 @@ PlotMST function will plot a minimum spanning tree.
     \item{show_clustering}{logical; If the user has used a value for 
                 max_allelic_difference when running makeGraphFromChewBBACA, 
                 the user has the option to show the clustering of nodes based 
-                on that threshold is set to TRUE, or FALSE to show the 
+                on that threshold if set to TRUE, or FALSE to show the 
                 minimum spanning tree without any clustering between nodes, as 
                 if the user did not apply any clustering. The default is TRUE}
 
@@ -75,7 +75,7 @@ PlotMST function will plot a minimum spanning tree.
                 The default is TRUE}
 
     \item{title}{character; This argument will allow the user to 
-                a title to the generated plot. 
+                add a title to the generated plot. 
                 The default is NULL}
 }
 
