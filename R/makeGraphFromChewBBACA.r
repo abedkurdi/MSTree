@@ -1,6 +1,7 @@
-##' @title MSTree
+#' @title MSTree
 
-##' @export makeGraphFromChewBBACA
+#' @export makeGraphFromChewBBACA
+globalVariables(c("allele_diff","is_mst","name"))
 
 makeGraphFromChewBBACA <- function(chewbbaca_ExtractCgMLST_output, 
             max_allelic_difference = -1){
@@ -12,10 +13,10 @@ makeGraphFromChewBBACA <- function(chewbbaca_ExtractCgMLST_output,
 
     # check input formats
     ## path or data frame
-    if(class(chewbbaca_ExtractCgMLST_output) == "character"){
+    if(is(chewbbaca_ExtractCgMLST_output, "character")){
         alleles <- read.csv(chewbbaca_ExtractCgMLST_output, row.names = 1, 
                     check.names = FALSE, sep='\t')
-    } else if(class(chewbbaca_ExtractCgMLST_output) == "data.frame") {
+    } else if(is(chewbbaca_ExtractCgMLST_output,"data.frame")) {
         alleles <- chewbbaca_ExtractCgMLST_output
     } else {
         stop("A path or dataframe of chewBBACA ExtractCgMLST is required!")
@@ -114,7 +115,7 @@ makeGraphFromChewBBACA <- function(chewbbaca_ExtractCgMLST_output,
 
     cat("Total edges:", nrow(edge_list), "\n")
     cat("MST edges:", sum(edge_list$is_mst), "\n")
-    cat("Additional edges (≤",max_difference,"):",sum(!edge_list$is_mst),"\n")
+    cat("Additional edges (",max_difference,"):",sum(!edge_list$is_mst),"\n")
 
     # Create final graph
     g <- graph_from_data_frame(edge_list, directed = FALSE, 

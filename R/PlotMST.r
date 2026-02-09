@@ -1,6 +1,6 @@
-##' @title MSTree
+#' @title MSTree
 
-##' @export PlotMST
+#' @export PlotMST
 
 PlotMST <- function(igraph_object, metadata = NULL, show_clustering = TRUE,
                     MST_edges_color = "black", cluster_edges_color = "grey",
@@ -25,11 +25,11 @@ PlotMST <- function(igraph_object, metadata = NULL, show_clustering = TRUE,
         p <- ggraph(ready_graph, layout = "stress") +
 
         geom_edge_link(aes(label = allele_diff,
-            color = is_mst,
-            width = is_mst),
-            label_size = edge_label_size, 
-            angle_calc = 'along', 
-            label_dodge = unit(edge_label_dodge, 'mm'), show.legend=show_legend) +
+        color = is_mst,
+        width = is_mst),
+        label_size = edge_label_size, 
+        angle_calc = 'along', 
+        label_dodge = unit(edge_label_dodge, 'mm'), show.legend=show_legend) +
 
         scale_edge_color_manual(values = c("TRUE" = MST_edges_color,
                                             "FALSE" = cluster_edges_color),
@@ -37,10 +37,10 @@ PlotMST <- function(igraph_object, metadata = NULL, show_clustering = TRUE,
                                             "FALSE" = "Threshold"),
                                 name = "Edge Type") +
 
-        scale_edge_width_manual(values = c("TRUE" = MST_edges_with, 
+        scale_edge_width_manual(values = c("TRUE" = MST_edges_width, 
                                             "FALSE" = cluster_edges_width),
-                          labels = c("TRUE" = "MST", "FALSE" = "Threshold"),
-                          name = "Edge Type")+
+                        labels = c("TRUE" = "MST", "FALSE" = "Threshold"),
+                        name = "Edge Type")+
 
         geom_node_point(color = node_color, size = node_size) +
         
@@ -48,7 +48,7 @@ PlotMST <- function(igraph_object, metadata = NULL, show_clustering = TRUE,
         
         theme_graph()
 
-    } else if(!is.null(metadata) && class(metadata) == "data.frame"){
+    } else if(!is.null(metadata) && is(metadata,"data.frame")){
         metadata <- metadata[match(V(ready_graph)$name, metadata[,1]),]
 
         for(i in 2:ncol(metadata)){
@@ -64,7 +64,7 @@ PlotMST <- function(igraph_object, metadata = NULL, show_clustering = TRUE,
             width = is_mst),
             label_size = edge_label_size, 
             angle_calc = 'along', 
-            label_dodge = unit(edge_label_dodge, 'mm'), show.legend=show_legend) +
+            label_dodge = unit(edge_label_dodge,'mm'),show.legend=show_legend)+
 
         scale_edge_color_manual(values = c("TRUE" = MST_edges_color,
                                             "FALSE" = cluster_edges_color),
@@ -72,10 +72,10 @@ PlotMST <- function(igraph_object, metadata = NULL, show_clustering = TRUE,
                                             "FALSE" = "Threshold"),
                                 name = "Edge Type") +
 
-        scale_edge_width_manual(values = c("TRUE" = MST_edges_with, 
+        scale_edge_width_manual(values = c("TRUE" = MST_edges_width, 
                                             "FALSE" = cluster_edges_width),
-                          labels = c("TRUE" = "MST", "FALSE" = "Threshold"),
-                          name = "Edge Type")+
+                        labels = c("TRUE" = "MST", "FALSE" = "Threshold"),
+                        name = "Edge Type")+
 
         ggtitle(title) +
         
@@ -85,7 +85,8 @@ PlotMST <- function(igraph_object, metadata = NULL, show_clustering = TRUE,
             message("\nset node_color parameter from the metadata\n")
             stop("the provided colum name does not exist")
         } else {
-            p <- p + geom_node_point(aes(color = .data[[node_color]]), size = node_size)
+            p <- p + geom_node_point(aes(color = .data[[node_color]]), 
+                size = node_size)
         }       
     }       
         

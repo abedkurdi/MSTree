@@ -39,12 +39,13 @@ no clustering is applied.
 }
 
 \examples{
-my_graph <- makeGraphFromChewBBACA("inst/extdata/cgMLST95.csv", 
-    max_allelic_difference=-1)
+my_graph <- makeGraphFromChewBBACA(system.file("extdata", "cgMLST95.csv", 
+    package = "MSTree"), max_allelic_difference=-1)
 }
 
 \value{
-The returned value is a igraph object containing the nodes and edges between nodes.
+The returned value is a igraph object containing the nodes and 
+edges between nodes.
 }
 
 \author{

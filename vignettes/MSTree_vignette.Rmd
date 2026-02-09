@@ -185,3 +185,7 @@ mst <- PlotMST(my_graph, show_clustering = TRUE, show_legend=FALSE,
     node_label_size = 3, title = "MST")
 
 mst
+
+```{r}
+sessionInfo()
+```

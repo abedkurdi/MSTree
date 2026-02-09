@@ -1,4 +1,7 @@
 exportPattern("makeGraphFromChewBBACA")
-exportPattern("plotMST")
+exportPattern("PlotMST")
 import(igraph)
 import(ggraph)
+import(utils)
+importFrom("methods", "is")
+import(ggplot2)

@@ -44,8 +44,8 @@ PlotMST function will plot a minimum spanning tree.
                 the width of the edges that connect the nodes. 
                 The default is 0.75}
 
-    \item{cluster_edges_width}{numeric; This argument will allow the user to set 
-                the width of the edges that connect the clustered nodes. 
+    \item{cluster_edges_width}{numeric; This argument will allow the user to 
+                set the width of the edges that connect the clustered nodes. 
                 The default is 0.5}
 
     \item{edge_label_size}{numeric; This argument will allow the user to set 
@@ -86,7 +86,10 @@ available to customize the minimum spanning tree.
 }
 
 \examples{
-PlotMST(my_graph, show_clustering = TRUE, show_legend=FALSE, 
+my_graph <- makeGraphFromChewBBACA(system.file("extdata", "cgMLST95.csv", 
+    package = "MSTree"), max_allelic_difference=-1)
+
+mst <- PlotMST(my_graph, show_clustering = TRUE, show_legend=FALSE, 
     MST_edges_color="#b97b29", node_color = "#3b17db", 
     node_label_size = 3, title = "MST")
 }
