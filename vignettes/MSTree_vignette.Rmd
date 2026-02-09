@@ -1,0 +1,37 @@
+---
+title: "MSTree: features cluster Scan"
+author:
+- name: Abdullah El-Kurdi
+  affiliation: 
+  - &id1 American University of Beirut, Beirut, Lebanon
+  email: ak161@aub.edu.lb
+vignette: >
+  %\VignetteIndexEntry{MSTree}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF8}
+output: BiocStyle::html_document
+---
+
+```{r style, echo=FALSE, results='asis'}
+BiocStyle::markdown()
+```
+
+
+# Version Info
+```{r, echo=FALSE, results="hide", warning=FALSE}
+suppressPackageStartupMessages({library('MSTree')})
+```
+<p>
+**R version**: `r R.version.string`
+<br />
+**Bioconductor version**: `r BiocManager::version()`
+<br />
+**Package version**: `r packageVersion("MSTree")`
+</p>
+
+```{r, setup, include = FALSE}
+knitr::opts_chunk$set(
+    collapse = TRUE,
+    comment = "#>"
+)
+```
