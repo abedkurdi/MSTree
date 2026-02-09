@@ -15,7 +15,7 @@ The below R packages are required for installation:
 Installation
 ------------
 
-1. Git clone the project directory `git clone <>`
+1. Git clone the project directory `git clone https://github.com/abedkurdi/MSTree.git`
 2. From the terminal run `R CMD build MSTree`
 3. Run `R CMD check MSTree_0.99.0.tar.gz`
 4. Run  `R CMD BiocCheck MSTree_0.99.0.tar.gz`
