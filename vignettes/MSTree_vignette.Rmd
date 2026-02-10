@@ -182,7 +182,7 @@ default is NULL.
 <br>
 
 # Example
-```
+```{r, eval=TRUE}
 cgmlst_output <- system.file("extdata", "cgMLST95.csv", package = "MSTree")
 
 my_graph <- makeGraphFromChewBBACA(cgmlst_output, max_allelic_difference = 9)
