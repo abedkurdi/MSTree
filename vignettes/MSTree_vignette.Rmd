@@ -60,15 +60,18 @@ The complex type distance for the _E. coli_ is 10. When set to 10, isolates
 with less than or equal to 10 are connected to make a cluster.
 
 # Dependencies
-MSTree depnds on the following packages:
-* igraph
-* ggraph
-* ggplot2
+MSTree depends on the following packages:
+
+- igraph
+- ggraph
+- ggplot2
 
 # Overview
 MSTree has two main functions:
+
 1. makeGraphFromChewBBACA: that construct a graph object from the output of 
                   chewBBACA pipeline.
+
 2. PlotMST: that takes the constructed graph from the previous function and 
                   it generates a minimum spanning tree.
 
