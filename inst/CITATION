@@ -9,6 +9,7 @@ citEntry(
   year         = format(Sys.Date(), "%Y"),
   note         = paste("R package version", meta$Version),
   url          = "https://bioconductor.org/packages/myPackage",
+  doi          = "",
   textVersion  = paste(
     "Abdullah El-Kurdi (",
     format(Sys.Date(), "%Y"),
