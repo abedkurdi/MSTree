@@ -1,0 +1,20 @@
+citHeader("To cite the myPackage package in publications, please use:")
+
+citEntry(
+  entry        = "Manual",
+  title        = "MSTree: Building Minimum Spanning Tree (MST) from chewBBACA pipeline output.",
+  author       = personList(
+    person("Abdullah", "El-Kurdi", email = "ak161@aub.edu.lb")
+  ),
+  year         = format(Sys.Date(), "%Y"),
+  note         = paste("R package version", meta$Version),
+  url          = "https://bioconductor.org/packages/myPackage",
+  textVersion  = paste(
+    "Abdullah El-Kurdi (",
+    format(Sys.Date(), "%Y"),
+    "). MSTree: Building Minimum Spanning Tree (MST) from chewBBACA pipeline output.",
+    "R package version ", meta$Version, ". ",
+    "https://bioconductor.org/packages/myPackage",
+    sep = ""
+  )
+)
