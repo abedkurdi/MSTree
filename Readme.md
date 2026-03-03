@@ -11,6 +11,7 @@ The below R packages are required for installation:
 + igraph
 + ggraph
 + ggplot2
++ NetPathMiner
 
 Installation
 ------------
