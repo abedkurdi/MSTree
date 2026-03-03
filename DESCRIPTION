@@ -1,7 +1,7 @@
 Package:MSTree
 Type: Package
 Title: MSTree plotting minimum spanning tree directly from the output of ChewBBACA pipeline
-Version: 0.99.2
+Version: 0.99.3
 biocViews: ComparativeGenomics, GenomicVariation, Clustering
 Authors@R: c(
     person("Abdullah", "El-Kurdi", email="ak161@aub.edu.lb", role = c("aut","cre"), comment=c(ORCID="0000-0002-8321-4025")))
