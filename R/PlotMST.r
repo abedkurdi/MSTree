@@ -7,7 +7,7 @@ PlotMST <- function(igraph_object, metadata = NULL, show_clustering = TRUE,
                     MST_edges_width = 0.75, cluster_edges_width = 0.5,
                     edge_label_size = 3, edge_label_dodge = 2,
                     node_color = "red", node_size = 3, node_label_size = 0,
-                    show_legend=TRUE, title = NULL){
+                    show_legend=TRUE, title = NULL, basic = FALSE){
 
     ready_graph <- igraph_object
 
@@ -98,6 +98,10 @@ PlotMST <- function(igraph_object, metadata = NULL, show_clustering = TRUE,
                 point.padding = unit(1.5, "lines"),
                 segment.size = 0.5,
                 segment.color = "grey50")
+    }
+
+    if(basic){
+        p <- plotNetwork(ready_graph)
     }
 
     return(p)

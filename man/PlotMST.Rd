@@ -7,7 +7,7 @@ makeGraphFromChewBBACA function}
                     MST_edges_width = 0.75, cluster_edges_width = 0.5,
                     edge_label_size = 3, edge_label_dodge = 2,
                     node_color = "red", node_size = 3, node_label_size = 0,
-                    show_legend=TRUE, title = NULL)
+                    show_legend=TRUE, title = NULL, basic = FALSE)
 }
 \description{
 Using the igraph object generated from makeGraphFromChewBBACA function, 
@@ -77,6 +77,10 @@ PlotMST function will plot a minimum spanning tree.
     \item{title}{character; This argument will allow the user to 
                 add a title to the generated plot. 
                 The default is NULL}
+
+    \item{basic}{logical; This argument will allow the user to 
+                generate a very basic minimum spanning tree layout. 
+                The default is FALSE}
 }
 
 \details{

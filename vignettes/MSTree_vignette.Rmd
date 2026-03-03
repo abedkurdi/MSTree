@@ -180,6 +180,10 @@ plot. The default is TRUE.
 This argument will allow the user to add a title to the generated plot. The 
 default is NULL.
 
+#### basic
+This argument will allow the user to generate a very basic minimum spanning 
+tree layout. The default is FALSE
+
 
 <br>
 <br>
@@ -196,6 +200,9 @@ mst <- PlotMST(my_graph, show_clustering = TRUE, show_legend=FALSE,
 
 mst
 ```
+
+
+
 
 <br>
 <br>
