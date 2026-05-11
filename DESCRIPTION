@@ -1,14 +1,15 @@
-Package:MSTree
-Type: Package
+Package: MSTree
 Title: MSTree plotting minimum spanning tree directly from the output of ChewBBACA pipeline
-Version: 0.99.4
-biocViews: ComparativeGenomics, GenomicVariation, Clustering
-Authors@R: c(
-    person("Abdullah", "El-Kurdi", email="ak161@aub.edu.lb", role = c("aut","cre"), comment=c(ORCID="0000-0002-8321-4025")))
-Description: This package is used to generate a graph object from the output of chewBBACA pipeline. Then, the generated graph object can be used to make a minimum spanning tree (MST). The minimum spanning tree can be customized using all the available arguments. This package consists of two functions: one to build the graph and another one for plotting.
+Version: 0.99.5
+Authors@R: 
+    person("Abdullah", "El-Kurdi", , "ak161@aub.edu.lb", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-8321-4025"))
+Description: This package is used to generate a graph object from the output of chewBBACA pipeline (https://chewbbaca.readthedocs.io/en/latest/). Then, the generated graph object can be used to make a minimum spanning tree (MST). The minimum spanning tree can be customized using all the available arguments. This package consists of two functions: one to build the graph and another one for plotting.
 License: Artistic-2.0
-Encoding: UTF-8
 Imports: igraph, ggraph, ggplot2, utils, methods, NetPathMiner
-VignetteBuilder: knitr
 Suggests: RUnit, BiocGenerics, BiocStyle, knitr, rmarkdown
-RoxygenNote: 6.1.0
+biocViews: ComparativeGenomics, GenomicVariation, Clustering
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.1
+VignetteBuilder: knitr

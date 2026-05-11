@@ -1,15 +1,42 @@
-#' @title MSTree
-
+#' @name makeGraphFromChewBBACA
+#' @title MSTree R package
+#' 
+#' @description Make a graph object from the extracted alleles
+#' 
+#' @details Make a graph object and generate minimum spanning tree.
+#' 
+#' This function takes alleles matrix and returns a graph object
+#' 
+#' @param chewbbaca_ExtractCgMLST_output Full path of the file name or 
+#'                a data frame.
+#' @param max_allelic_difference numeric; This is an optional argument, can 
+#'               be used to connect nodes that have a distance less than or 
+#'               equal to the specified number, useful to show clusters of 
+#'               isolates. The default is set to -1 which means no clustering 
+#'               is applied.
+#' @param verbose logical; set to TRUE to print on screen the progress. 
+#'               default is FALSE.
+#' @return Graph object.
+#' @importFrom utils read.csv
+#' @importFrom igraph graph_from_adjacency_matrix
+#' @importFrom igraph mst
+#' @importFrom igraph as_edgelist
+#' @importFrom igraph graph_from_data_frame
+#' @importFrom igraph E
+#' @importFrom igraph V
+#' @importFrom igraph E<-
+#' @importFrom igraph V<-
+#' 
+#' @export
+#' @examples
+#' my_graph <- makeGraphFromChewBBACA(system.file("extdata", "cgMLST95.csv", 
+#'   package = "MSTree"), max_allelic_difference=-1)
+#' 
 #' @export makeGraphFromChewBBACA
 globalVariables(c("allele_diff","is_mst","name"))
 
 makeGraphFromChewBBACA <- function(chewbbaca_ExtractCgMLST_output, 
-            max_allelic_difference = -1){
-    
-    # check argument
-    if (missing(chewbbaca_ExtractCgMLST_output)) {
-        stop("A path or dataframe of chewBBACA ExtractCgMLST is needed!")
-    }
+            max_allelic_difference = -1, verbose = FALSE){
 
     # check input formats
     ## path or data frame
@@ -29,7 +56,6 @@ makeGraphFromChewBBACA <- function(chewbbaca_ExtractCgMLST_output,
         stop("max_allelic_difference should be an integer!")
     } else if(max_allelic_difference < -1){
         max_allelic_difference <- -1
-        message("max_allelic_difference is < -1 - it is set to default (-1)")
     }
 
     # Replace any specific missing value codes (like -1) with NA
@@ -42,6 +68,10 @@ makeGraphFromChewBBACA <- function(chewbbaca_ExtractCgMLST_output,
     colnames(allele_diff_matrix) <- rownames(alleles)
 
     # Compute pairwise allele differences manually
+    if(verbose){
+        message("Computing pairwise allele differences...")
+    }
+
     for (i in 1:(n - 1)) {
         for (j in (i + 1):n) {
             a <- as.numeric(alleles[i, ]) # extract the alleles for sample i
@@ -51,6 +81,10 @@ makeGraphFromChewBBACA <- function(chewbbaca_ExtractCgMLST_output,
             allele_diff_matrix[i, j] <- diff_count # save the number
             allele_diff_matrix[j, i] <- diff_count # save the number
         }
+    }
+
+    if(verbose){
+        message("Making full grpah and computing MST...")
     }
 
     # Create full graph and compute MST
@@ -93,6 +127,9 @@ makeGraphFromChewBBACA <- function(chewbbaca_ExtractCgMLST_output,
 
     # Add additional edges where difference <= threshold 
     if(max_difference > -1){
+        if(verbose){
+        message("Clustering based on the max_difference threshold...")
+    }
         for (i in 1:(n - 1)) {
             for (j in (i + 1):n) {
                 diff_val <- allele_diff_matrix[i, j]
@@ -113,9 +150,11 @@ makeGraphFromChewBBACA <- function(chewbbaca_ExtractCgMLST_output,
     }
     }
 
-    cat("Total edges:", nrow(edge_list), "\n")
-    cat("MST edges:", sum(edge_list$is_mst), "\n")
-    cat("Additional edges (",max_difference,"):",sum(!edge_list$is_mst),"\n")
+    if(verbose){
+        message("Total edges:", nrow(edge_list), "\n")
+        message("MST edges:", sum(edge_list$is_mst), "\n")
+        message("Additional edges (",max_difference,"):",sum(!edge_list$is_mst),"\n")
+    }
 
     # Create final graph
     g <- graph_from_data_frame(edge_list, directed = FALSE, 
