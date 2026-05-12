@@ -1,5 +1,5 @@
 library(RUnit)
-require(testthat)
+library(testthat)
 require(igraph)
 
 csv_path <- system.file("extdata", "cgMLST95.csv", package = "MSTree")
